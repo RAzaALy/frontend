@@ -84,6 +84,7 @@ const Employees = () => {
   // Handlers for editing and deleting an employee
   const handleEdit = (employee) => {
     setIsEditMode(true);
+    console.log({employee , edit : true})
     setModalOpen(true);
     setSelectedEmployee(
       employees.find((employe) => employe.employeeId === employee.employeeId)

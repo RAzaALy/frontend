@@ -4,20 +4,24 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 
-export default function SelectMenu({ title, menuitems, onChange, value, name }) {
+export default function SelectMenu({ title, menuitems, onChange, value, name, editEntity }) {
+  // If in edit mode, use the editEntity's cafeId, otherwise use the value passed in
+  const selectedValue = editEntity ? editEntity.cafeId : value;
+
   return (
     <FormControl fullWidth sx={{ m: 1 }} size="small">
       <InputLabel id="demo-select-small-label">{title}</InputLabel>
       <Select
         labelId="demo-select-small-label"
         id="demo-select-small"
-        value={value}
+        value={selectedValue}
         label={title}
         onChange={(e) => onChange(e.target.value, name)}
       >
         <MenuItem value="">
           <em>None</em>
         </MenuItem>
+      
         {menuitems && menuitems.map((item) => (
           <MenuItem key={item.cafeId} value={item.cafeId}>
             {item.name}

@@ -1,10 +1,17 @@
-import * as React from 'react';
-import InputLabel from '@mui/material/InputLabel';
-import MenuItem from '@mui/material/MenuItem';
-import FormControl from '@mui/material/FormControl';
-import Select from '@mui/material/Select';
+import * as React from "react";
+import InputLabel from "@mui/material/InputLabel";
+import MenuItem from "@mui/material/MenuItem";
+import FormControl from "@mui/material/FormControl";
+import Select from "@mui/material/Select";
 
-export default function SelectMenu({ title, menuitems, onChange, value, name, editEntity }) {
+export default function SelectMenu({
+  title,
+  menuitems,
+  onChange,
+  value,
+  name,
+  editEntity,
+}) {
   // If in edit mode, use the editEntity's cafeId, otherwise use the value passed in
   const selectedValue = editEntity ? editEntity.cafeId : value;
 
@@ -18,15 +25,12 @@ export default function SelectMenu({ title, menuitems, onChange, value, name, ed
         label={title}
         onChange={(e) => onChange(e.target.value, name)}
       >
-        <MenuItem value="">
-          <em>None</em>
-        </MenuItem>
-      
-        {menuitems && menuitems.map((item) => (
-          <MenuItem key={item.cafeId} value={item.cafeId}>
-            {item.name}
-          </MenuItem>
-        ))}
+        {menuitems &&
+          menuitems.map((item) => (
+            <MenuItem key={item.cafeId} value={item.cafeId}>
+              {item.name}
+            </MenuItem>
+          ))}
       </Select>
     </FormControl>
   );
